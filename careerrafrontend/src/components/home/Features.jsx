@@ -62,7 +62,7 @@ const Features = () => {
   return (
     <section
       id="features"
-      className="relative min-h-screen flex flex-col justify-start pt-16 scroll-mt-20"
+      className="relative min-h-screen flex flex-col justify-start pt-12 scroll-mt-10"
       ref={ref}
     >
       {/* Background Shapes */}
@@ -90,7 +90,7 @@ const Features = () => {
 
       <div className="max-w-6xl mx-auto px-4 relative z-10">
         {/* Section Title */}
-        <div className="text-center mb-12">
+        <div className="text-center mb-10">
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-3 tracking-tight">
             Powerful Features
           </h2>
@@ -99,8 +99,8 @@ const Features = () => {
           </p>
         </div>
 
-        {/* Horizontal Feature Boxes */}
-        <div className="flex flex-col md:flex-row items-center justify-center gap-8 border-y border-dashed border-slate-200 py-10">
+        {/* First Row Features */}
+        <div className="flex flex-col md:flex-row items-center justify-center gap-8 border-y border-dashed border-slate-200 py-8">
           {featureList.map((feature, index) => (
             <motion.div
               key={index}
@@ -125,8 +125,15 @@ const Features = () => {
           ))}
         </div>
 
-        {/* Secondary Features */}
-        <div className="flex flex-col md:flex-row items-center justify-center gap-8 mt-12 border-y border-dashed border-slate-200 py-10">
+        {/* Mini Paragraph Before Second Section */}
+        <div className="text-center mt-12 mb-4">
+          <p className="text-sm md:text-base text-slate-500 max-w-xl mx-auto">
+            Careerra supports everyone involved in the hiring journey — from job seekers to teams managing talent.
+          </p>
+        </div>
+
+        {/* Second Row Features */}
+        <div className="flex flex-col md:flex-row items-center justify-center gap-8 border-y border-dashed border-slate-200 py-8">
           {secondaryFeatures.map((feature, index) => (
             <motion.div
               key={index}

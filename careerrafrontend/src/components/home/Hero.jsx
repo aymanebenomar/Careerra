@@ -12,7 +12,7 @@ const Hero = () => {
     "https://saasly.prebuiltui.com/assets/companies-logo/huawei.svg",
     "https://saasly.prebuiltui.com/assets/companies-logo/walmart.svg",
   ];
-
+  
   const fadeIn = {
     initial: { opacity: 0 },
     animate: { opacity: 1, transition: { duration: 1 } },

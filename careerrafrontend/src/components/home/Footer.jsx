@@ -4,18 +4,18 @@ import logo from '../../assets/darkmodelogo.svg'; // Update path if needed
 
 const Footer = () => {
   return (
-    <footer className="relative w-full bg-black text-white min-h-screen overflow-hidden flex flex-col">
+    <footer className="relative w-full bg-black text-white min-h-[78vh] overflow-hidden flex flex-col">
 
       {/* Top overlay/fog */}
-      <div className="absolute top-0 left-0 w-full h-64 sm:h-80 md:h-96 bg-gradient-to-b from-black/100 via-black/70 to-transparent pointer-events-none z-20"></div>
+      <div className="absolute top-0 left-0 w-full h-56 sm:h-60 md:h-64 bg-gradient-to-b from-black/100 via-black/70 to-transparent pointer-events-none z-20"></div>
 
       {/* Logo */}
-      <div className="absolute top-2 left-1/2 transform -translate-x-1/2 opacity-80 z-10">
-        <img src={logo} alt="Careera Logo" className="h-96 w-auto object-contain" />
+      <div className="absolute top-8 left-1/2 transform -translate-x-1/2 opacity-80 z-10">
+        <img src={logo} alt="Careera Logo" className="h-64 w-auto object-contain" />
       </div>
 
       {/* Middle CTA Section */}
-      <div className="flex-1 flex items-start justify-center z-20 relative pt-72 sm:pt-80 md:pt-[22rem]">
+      <div className="flex-1 flex items-start justify-center z-20 relative pt-56 sm:pt-60 md:pt-[18rem]">
         <div className='border-y border-dashed border-slate-200 w-full max-w-5xl mx-auto px-10 sm:px-16'>
           <div className="flex flex-col md:flex-row text-center md:text-left items-center justify-between gap-8 px-3 md:px-10 border-x border-dashed border-slate-200 py-16 sm:py-20 -mt-10 -mb-10 w-full">
             <p className="text-xl md:text-2xl font-medium max-w-md text-white">

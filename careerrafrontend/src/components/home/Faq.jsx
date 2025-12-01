@@ -1,7 +1,8 @@
 import React from 'react'
+import logo from '../../assets/logonameblue.svg' // Replace with your logo path
 
 const Faq = () => {
-    const [openIndex, setOpenIndex] = React.useState(null)
+    const [openIndex, setOpenIndex] = React.useState(0) // First Q open by default
     const faqsData = [
         {
             question: 'What is Careera?',
@@ -24,27 +25,57 @@ const Faq = () => {
             answer: 'Yes! You can track the performance and status of your résumés and get actionable insights to improve your job applications.'
         }
     ]
-  return (
-    <div id='faq' className='flex flex-col items-center py-20 px-4 scroll-mt-12'>
-        <style>{`
-                @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-                * {
-                    font-family: 'Poppins', sans-serif;
-                }
+    return (
+        <div id='faq' className='relative flex flex-col items-center py-16 px-4 scroll-mt-12'>
+
+            {/* === BACKGROUND LINES === */}
+            <div className="absolute inset-0 -z-20">
+                <div
+                    className="absolute inset-0 opacity-[0.02]"
+                    style={{
+                        backgroundImage: `linear-gradient(to right, #000 1px, transparent 1px),
+                                          linear-gradient(to bottom, #000 1px, transparent 1px)`,
+                        backgroundSize: "4rem 4rem",
+                        backgroundPosition: "center center",
+                    }}
+                />
+            </div>
+
+            <style>{`
+                @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap');
+                * { font-family: 'Poppins', sans-serif; }
             `}</style>
-            <div className='flex flex-col items-center text-center text-slate-800 px-3'>
-                <p className='text-base md:text-lg font-medium text-slate-600'>FAQ</p>
-                <h1 className='text-3xl md:text-4xl font-semibold mt-2'>Frequently Asked Questions</h1>
-                <p className='text-base md:text-lg text-slate-500 mt-4 max-w-sm'>
-                    Proactively answering FAQs boosts user confidence and cuts down on support tickets.
+
+            {/* === HEADING === */}
+            <div className='text-center mb-6 relative z-10 -mt-6'>
+                <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-3 tracking-tight">Frequently Asked Questions</h2>
+                <p className='text-base md:text-lg text-slate-500 mt-2 max-w-md mx-auto'>
+                    Here you'll find answers to common questions about using Careera.
                 </p>
-                <div className='max-w-xl w-full mt-6 flex flex-col gap-4 items-start text-left'>
+            </div>
+
+            {/* === CONTENT ROW === */}
+            <div className="relative z-10 max-w-6xl w-full flex flex-col md:flex-row gap-8 items-center">
+
+                {/* Left side: FAQ Q&A (vertically centered) */}
+                <div className="md:w-1/2 flex flex-col justify-center gap-4 items-start text-left text-slate-800">
                     {faqsData.map((faq, index) => (
                         <div key={index} className='flex flex-col items-start w-full'>
-                            <div className='flex items-center justify-between w-full cursor-pointer border border-indigo-100 p-4 rounded' onClick={() => setOpenIndex(openIndex === index ? null : index)}>
-                                <h2 className='text-base md:text-lg'>{faq.question}</h2>
-                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" className={`${openIndex === index ? "rotate-180" : ""} transition-all duration-500 ease-in-out`}>
+                            <div
+                                onClick={() => setOpenIndex(openIndex === index ? null : index)}
+                                className='flex items-center justify-between w-full cursor-pointer bg-white border border-indigo-100 p-4 rounded'
+                                title={openIndex === index ? "Close" : "Open"} // Tooltip for hover
+                            >
+                                <h2 className='text-base md:text-lg font-semibold'>{faq.question}</h2>
+                                <svg
+                                    width="18"
+                                    height="18"
+                                    viewBox="0 0 18 18"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    className={`${openIndex === index ? "rotate-180" : ""} transition-all duration-500 ease-in-out`}
+                                >
                                     <path d="m4.5 7.2 3.793 3.793a1 1 0 0 0 1.414 0L13.5 7.2" stroke="#1D293D" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                                 </svg>
                             </div>
@@ -54,9 +85,25 @@ const Faq = () => {
                         </div>
                     ))}
                 </div>
+
+                {/* Right side: logo above paragraph (vertically centered) */}
+                <div className="md:w-1/2 flex flex-col justify-center items-center text-center text-slate-500">
+                    <img src={logo} alt="Careera Logo" className="w-20 h-auto mb-4"/>
+                    <p className='text-base md:text-lg w-full whitespace-pre-line'>
+                        Here are the answers to
+                        some common questions
+                        we receive.
+
+                        If you want to ask us a question
+                        directly, feel free to schedule a
+                        chat with us at the end of the
+                        page.
+                    </p>
+                </div>
+
             </div>
-    </div>
-  )
+        </div>
+    )
 }
 
 export default Faq
