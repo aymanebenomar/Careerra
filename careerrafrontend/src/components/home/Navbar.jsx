@@ -68,6 +68,12 @@ const Navbar = () => {
               scrolled ? "gap-2" : "gap-4"
             }`}
           >
+			<Link
+              to='/app?state=login'
+              className="px-6 py-2 border active:scale-95 hover:bg-slate-50 transition-all rounded-full text-slate-700 hover:text-slate-900"
+            >
+              Login
+            </Link>
             <Link
               to="/app?state=register"
               className="
@@ -95,13 +101,6 @@ const Navbar = () => {
                   d="M19 12H5m14 0-4 4m4-4-4-4"
                 />
               </svg>
-            </Link>
-
-            <Link
-              to='/app?state=login'
-              className="px-6 py-2 border active:scale-95 hover:bg-slate-50 transition-all rounded-full text-slate-700 hover:text-slate-900"
-            >
-              Login
             </Link>
           </div>
 
