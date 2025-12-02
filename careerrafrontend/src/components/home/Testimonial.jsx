@@ -1,6 +1,6 @@
 import React from 'react';
-import customPic1 from '../../assets/z.jpeg'; // your first custom picture
-import customPic2 from '../../assets/me.jpeg'; // your second custom picture
+import customPic1 from '../../assets/z.jpeg';
+import customPic2 from '../../assets/me.jpeg';
 
 const Testimonial = () => {
   const cardsData = [

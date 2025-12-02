@@ -8,8 +8,6 @@ import Faq from '../components/home/Faq'
 import Footer from '../components/home/Footer'
 
 
-
-
 const Home = () => {
   return (
 	<div>
