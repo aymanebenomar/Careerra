@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Logo from '../assets/careerralogowebsite.svg';
+import { Menu, X } from 'lucide-react';
 
 const Usernavbar = () => {
   const user = { name: "Benomar Aymane" };
   const navigate = useNavigate();
   const [scrolled, setScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,38 +23,64 @@ const Usernavbar = () => {
   };
 
   return (
-    <div className={`fixed top-0 w-full z-50 transition-shadow ${scrolled ? "shadow-md bg-white" : "bg-white/90"}`}>
-      <nav className='flex items-center justify-between max-w-7xl mx-auto px-4 py-3 md:py-4 text-slate-800 transition-all'>
-        
+    <div className="fixed w-full z-50">
+      <nav className="flex items-center justify-between max-w-7xl mx-auto px-4 py-3 md:py-4 text-slate-800 transition-all">
         {/* Logo */}
         <a href="/" className="flex-shrink-0">
           <img
             src={Logo}
             alt="Logo"
-            className={`transition-all duration-500 ${scrolled ? "h-8 md:h-10" : "h-10 md:h-12"}`}
+            className="h-8 md:h-11 w-auto" // smaller on mobile
           />
         </a>
 
-        {/* User Greeting / Profile & Logout */}
-        <div className="hidden md:flex items-center space-x-4">
-          <p className="text-sm md:text-base text-slate-700">Hello, {user.name}</p>
+        {/* Desktop User Greeting / Profile & Logout */}
+        <div className="hidden md:flex items-center gap-4 text-sm">
+          <p>Hello, {user.name}</p>
           <button
             onClick={() => navigate('/profile')}
-            className="px-3 py-1 bg-indigo-500 text-white rounded-lg text-sm hover:bg-indigo-600 transition-colors"
+            className="px-7 py-1.5 bg-blue-700 text-white rounded-full text-sm hover:bg-indigo-600 transition-all"
           >
             Profile
           </button>
           <button
             onClick={handleLogout}
-            className="px-3 py-1 bg-red-500 text-white rounded-lg text-sm hover:bg-red-600 transition-colors"
+            className="bg-red-500 hover:bg-red-600 px-7 py-1.5 rounded-full text-white transition-all active:scale-95"
           >
             Logout
           </button>
         </div>
 
+        {/* Mobile Toggle */}
+        <div className="md:hidden flex items-center">
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="p-2 rounded-md text-gray-800 hover:bg-gray-200 transition-all"
+          >
+            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
       </nav>
+
+      {/* Mobile Menu */}
+      {mobileMenuOpen && (
+        <div className="md:hidden bg-white w-full shadow-md px-4 py-3 flex flex-col gap-2">
+          <button
+            onClick={() => { navigate('/profile'); setMobileMenuOpen(false); }}
+            className="px-4 py-2 bg-blue-700 text-white rounded-lg text-sm hover:bg-indigo-600 transition-all"
+          >
+            Profile
+          </button>
+          <button
+            onClick={() => { handleLogout(); setMobileMenuOpen(false); }}
+            className="px-4 py-2 bg-red-500 text-white rounded-lg text-sm hover:bg-red-600 transition-all"
+          >
+            Logout
+          </button>
+        </div>
+      )}
     </div>
-  )
-}
+  );
+};
 
 export default Usernavbar;

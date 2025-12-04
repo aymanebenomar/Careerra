@@ -4,7 +4,7 @@ import { FilePenLineIcon, PencilIcon, PlusIcon, TrashIcon, UploadCloudIcon, XIco
 import { useNavigate } from 'react-router-dom';
 
 const Dashboard = () => {
-  
+
   const [allResumes, setAllResumes] = useState([]);
   const [showCreateResume, setshowCreateResume] = useState(false);
   const [ShowUploadResume, setShowUploadResume] = useState(false);
@@ -105,9 +105,7 @@ const Dashboard = () => {
 
                 {/* Title Row - centered */}
                 <div className="flex flex-col items-center justify-center gap-2 w-full h-full">
-                  <div className="p-4 rounded-lg bg-gradient-to-br from-indigo-50 to-indigo-100 shadow-sm flex items-center justify-center">
-                    <FilePenLineIcon className="size-8 group-hover:scale-105 transition-all" />
-                  </div>
+                  <FilePenLineIcon className="text-[#3902FF] size-8 group-hover:scale-105 transition-all" />
                   <p className="text-sm font-semibold text-center truncate w-full">{resume.title}</p>
                 </div>
 
