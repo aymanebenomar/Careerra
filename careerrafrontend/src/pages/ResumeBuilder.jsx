@@ -89,6 +89,17 @@ const ResumeBuilder = () => {
 
 							</div>
 						</div>
+
+						{/* Form Content */}
+						<div className='space-y-6'>
+							{
+								activeSection.id === 'personal' && (
+									<div>
+										
+									</div>
+								)
+							}
+						</div>
 					</div>
 				</div>
 
