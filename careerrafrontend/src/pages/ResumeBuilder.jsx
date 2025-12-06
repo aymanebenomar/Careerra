@@ -3,6 +3,8 @@ import { useParams, Link } from 'react-router-dom'
 import { dummyResumeData } from '../assets/assets'
 import { ArrowLeftIcon, Briefcase, ChevronLeft, ChevronRight, FileText, FolderIcon, GraduationCap, Sparkles, User } from 'lucide-react'
 import Dashboard from './Dashboard';
+import PersonalinfoForm from '../components/PersonalinfoForm';
+import Resumepreview from '../components/Resumepreview';
 
 const ResumeBuilder = () => {
 
@@ -34,7 +36,7 @@ const ResumeBuilder = () => {
 	const [removeBackground, setRemoveBackground] = useState(false);
 
 	const sections = [
-		{id: "peronal", name: "Personal Info", icon: User},
+		{id: "personal", name: "Personal Info", icon: User},
 		{id: "summay", name: "summay", icon: FileText},
 		{id: "experience", name: "Experience", icon: Briefcase},
 		{id: "education", name: "Education", icon: GraduationCap},
@@ -66,7 +68,7 @@ const ResumeBuilder = () => {
 						{/* Progress barre - using activeSectionIndex */}
 						<hr  className='absolute top-0 left-0 right-0 border-2 border-gray-200'/>
 						<hr className='absolute top-0 left-0 h-1 bg-gradient-to-r
-						from-green-500 to-green-700 border-none transition-all duration-2000' 
+						from-blue-700 to-green-500 border-none transition-all duration-2000' 
 						style={{width: `${activeSectionIndex * 100 / (sections.length - 1)}%`}} />
 
 						{/* Section Navigation */}
@@ -85,7 +87,7 @@ const ResumeBuilder = () => {
 									transition-all ${activeSectionIndex === sections.length - 1 && 'opacity-50'}`} 
 									disabled={activeSectionIndex === sections.length - 1}>
 										<ChevronRight className='size-4' /> Next
-									</button>
+									</button>	
 
 							</div>
 						</div>
@@ -94,9 +96,11 @@ const ResumeBuilder = () => {
 						<div className='space-y-6'>
 							{
 								activeSection.id === 'personal' && (
-									<div>
-										
-									</div>
+									<PersonalinfoForm  data={resumeData.personal_info} onChange={(data) => 
+										setResumeData(prev => ({...prev, personal_info:data}))}
+										removeBackground={removeBackground}
+										setRemoveBackground={setRemoveBackground}
+										/>
 								)
 							}
 						</div>
@@ -104,7 +108,12 @@ const ResumeBuilder = () => {
 				</div>
 
 				{/* Right Panel - Preview */}
-				<div>
+				<div className='lg:col-span-7 max-lg:mt-6 px-4'>
+					<div>
+						{/* --- buttons --- */}
+					</div>
+
+					<Resumepreview data={resumeData} template={resumeData.template} accentColor={resumeData.accent_color} />
 
 				</div>
 			</div>
