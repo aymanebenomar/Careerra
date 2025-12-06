@@ -6,6 +6,7 @@ import Dashboard from './Dashboard';
 import PersonalinfoForm from '../components/PersonalinfoForm';
 import Resumepreview from '../components/Resumepreview';
 import TemplateSelecter from '../components/TemplateSelecter';
+import ColorPicker from '../components/ColorPicker';
 
 const ResumeBuilder = () => {
 
@@ -77,6 +78,8 @@ const ResumeBuilder = () => {
 							<div className='flex justify-between items-center mb-6 border-b border-gray-300 py-1'>
 								<TemplateSelecter selectedTemplate={resumeData.template}
 									onChange={(template) => setResumeData(prev => ({...prev, template}))} />
+								<ColorPicker selectedColor={resumeData.accent_color} onchange={(color) => setResumeData((prev) => 
+									({...prev, accent_color:color}))}/>
 							</div>
 							<div className='flex items-center'>
 								{activeSectionIndex !== 0 && (

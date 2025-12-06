@@ -23,19 +23,25 @@ const Usernavbar = () => {
   };
 
   return (
-    <div className="fixed w-full z-50">
-      <nav className="flex items-center justify-between max-w-7xl mx-auto px-4 py-3 md:py-4 text-slate-800 transition-all">
+    <div className="fixed w-full z-50 mt-2">
+      <nav
+        className={`flex items-center justify-between max-w-7xl mx-auto px-4 py-3 md:py-4 text-slate-800 transition-all duration-300 ${
+          scrolled
+            ? 'bg-white/80 rounded-lg backdrop-blur-sm gap-2 scale-[0.95] shadow-md'
+            : 'bg-transparent gap-4'
+        }`}
+      >
         {/* Logo */}
         <a href="/" className="flex-shrink-0">
           <img
             src={Logo}
             alt="Logo"
-            className="h-8 md:h-11 w-auto" // smaller on mobile
+            className="h-8 md:h-11 w-auto transition-all duration-300"
           />
         </a>
 
         {/* Desktop User Greeting / Profile & Logout */}
-        <div className="hidden md:flex items-center gap-4 text-sm">
+        <div className="hidden md:flex items-center gap-4 text-sm transition-all duration-300">
           <p>Hello, {user.name}</p>
           <button
             onClick={() => navigate('/profile')}
@@ -64,7 +70,7 @@ const Usernavbar = () => {
 
       {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-white w-full shadow-md px-4 py-3 flex flex-col gap-2">
+        <div className="md:hidden bg-white/90 w-full shadow-md px-4 py-3 flex flex-col gap-2 rounded-lg backdrop-blur-sm">
           <button
             onClick={() => { navigate('/profile'); setMobileMenuOpen(false); }}
             className="px-4 py-2 bg-blue-700 text-white rounded-lg text-sm hover:bg-indigo-600 transition-all"
