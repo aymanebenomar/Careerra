@@ -9,9 +9,10 @@ const ProfessionalSummary = ({data, onChange, setResumeData}) => {
 				<h3 className='flex items-center gap-2 text-lg font-semibold text-gray-800'> Professional Summary </h3>
 				<p className='text-sm text-gray-500'> Add summary for your Resume here</p>
 			</div>
-			<button>
-				<Sparkles className='size-4' />AI Ehance
-			</button>
+				<button className="flex items-center gap-1 px-2 py-1 text-xs bg-blue-300 rounded hover:bg-blue-200 transition-colors">
+					<Sparkles className="w-3 h-3" />
+						Enhance with AI
+				</button>
 		</div>
 		<div className='mt-6'>
 			<textarea value={data || ""} rows={7} onChange={(e) => onChange(e.target.value)}  

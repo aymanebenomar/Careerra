@@ -1,15 +1,19 @@
 import React from 'react';
 import customPic1 from '../../assets/z.jpeg';
 import customPic2 from '../../assets/me.jpeg';
+import customPic3 from '../../assets/z.jpeg';
+import customPic4 from '../../assets/z.jpeg';
+import customPic5 from '../../assets/z.jpeg';
+import customPic6 from '../../assets/z.jpeg';
 
 const Testimonial = () => {
   const cardsData = [
     { image: customPic1, name: 'Zakaria Alliouate', handle: '@alliouate_zaka', date: 'November 03, 2025', comment: 'This AI résumé tool gave me precise guidance that made my CV truly stand out!' },
     { image: customPic2, name: 'Aymane Benomar', handle: '@aymanebenomar', date: 'October 17, 2025', comment: 'Creating multiple CV versions and tracking improvements has never been this easy.' },
-    { image: 'https://images.unsplash.com/photo-1614281965243-57b0a5f0b109?q=80&w=200', name: 'Youssef El Amrani', handle: '@youssef_elamrani', date: 'November 15, 2025', comment: 'Thanks to this AI résumé tool, I created a standout CV that helped me land interviews faster than ever!' },
-    { image: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=200', name: 'Fatima Zahra', handle: '@fzahra', date: 'October 10, 2025', comment: 'The suggestions and templates are incredibly useful. It feels like having a professional career advisor at my fingertips.' },
-    { image: 'https://images.unsplash.com/photo-1544723795-3fb6469f5b39?w=200&auto=format&fit=crop&q=60', name: 'Liam O’Connor', handle: '@liamoc', date: 'September 22, 2025', comment: 'I love how easy it is to manage multiple résumé versions and see AI feedback instantly.' },
-    { image: 'https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?w=200&auto=format&fit=crop&q=60', name: 'Amina Benali', handle: '@amina_b', date: 'November 5, 2025', comment: 'Creating a professional-looking CV has never been this smooth. Highly recommend it!' }
+    { image: customPic3, name: 'Youssef El Amrani', handle: '@youssef_elamrani', date: 'November 15, 2025', comment: 'Thanks to this AI résumé tool, I created a standout CV that helped me land interviews faster than ever!' },
+    { image: customPic4, name: 'Fatima Zahra', handle: '@fzahra', date: 'October 10, 2025', comment: 'The suggestions and templates are incredibly useful. It feels like having a professional career advisor at my fingertips.' },
+    { image: customPic5, name: 'Liam O’Connor', handle: '@liamoc', date: 'September 22, 2025', comment: 'I love how easy it is to manage multiple résumé versions and see AI feedback instantly.' },
+    { image: customPic6, name: 'Amina Benali', handle: '@amina_b', date: 'November 5, 2025', comment: 'Creating a professional-looking CV has never been this smooth. Highly recommend it!' }
   ];
 
   const CreateCard = ({ card }) => (
@@ -52,17 +56,27 @@ const Testimonial = () => {
         </p>
       </div>
 
-      {[...Array(2)].map((_, rowIndex) => (
-        <div key={rowIndex} className="marquee-row w-full mx-auto max-w-5xl overflow-hidden relative mb-10">
-          <div className="absolute left-0 top-0 h-full w-20 z-10 pointer-events-none bg-gradient-to-r from-white to-transparent"></div>
-          <div className={`flex animate-marquee min-w-[200%] pt-10 pb-5 ${rowIndex === 1 ? 'animate-marquee-reverse' : ''}`}>
-            {[...cardsData, ...cardsData].map((card, index) => (
-              <CreateCard key={index} card={card} />
-            ))}
-          </div>
-          <div className="absolute right-0 top-0 h-full w-20 md:w-40 z-10 pointer-events-none bg-gradient-to-l from-white to-transparent"></div>
+      {/* First Row */}
+      <div className="marquee-row w-full mx-auto max-w-5xl overflow-hidden relative mb-10">
+        <div className="absolute left-0 top-0 h-full w-20 z-10 pointer-events-none bg-gradient-to-r from-white to-transparent"></div>
+        <div className="flex animate-marquee min-w-[200%] pt-10 pb-5">
+          {[...cardsData.slice(0, 3), ...cardsData.slice(0, 3)].map((card, index) => (
+            <CreateCard key={index} card={card} />
+          ))}
         </div>
-      ))}
+        <div className="absolute right-0 top-0 h-full w-20 md:w-40 z-10 pointer-events-none bg-gradient-to-l from-white to-transparent"></div>
+      </div>
+
+      {/* Second Row */}
+      <div className="marquee-row w-full mx-auto max-w-5xl overflow-hidden relative mb-10">
+        <div className="absolute left-0 top-0 h-full w-20 z-10 pointer-events-none bg-gradient-to-r from-white to-transparent"></div>
+        <div className="flex animate-marquee-reverse min-w-[200%] pt-10 pb-5">
+          {[...cardsData.slice(3), ...cardsData.slice(3)].map((card, index) => (
+            <CreateCard key={index} card={card} />
+          ))}
+        </div>
+        <div className="absolute right-0 top-0 h-full w-20 md:w-40 z-10 pointer-events-none bg-gradient-to-l from-white to-transparent"></div>
+      </div>
 
       <style>{`
         @keyframes marquee {
@@ -80,6 +94,9 @@ const Testimonial = () => {
           animation: marquee 40s linear infinite;
         }
         .animate-marquee-reverse {
+          display: flex;
+          gap: 1rem;
+          min-width: max-content;
           animation: marqueeReverse 40s linear infinite;
         }
       `}</style>
