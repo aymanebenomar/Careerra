@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useParams, Link } from 'react-router-dom'
+import { useParams, Link, data } from 'react-router-dom'
 import { dummyResumeData } from '../assets/assets'
 import { ArrowLeftIcon, Briefcase, ChevronLeft, ChevronRight, FileText, FolderIcon, GraduationCap, Sparkles, User } from 'lucide-react'
 import Dashboard from './Dashboard';
@@ -7,6 +7,11 @@ import PersonalinfoForm from '../components/PersonalinfoForm';
 import Resumepreview from '../components/Resumepreview';
 import TemplateSelecter from '../components/TemplateSelecter';
 import ColorPicker from '../components/ColorPicker';
+import ProfessionalSummary from '../components/ProfessionalSummary';
+import ExperienceForm from '../components/ExperienceForm';
+import EducationForm from '../components/EducationForm';
+import ProjectForm from '../components/ProjectForm';
+import SkillsForm from '../components/SkillsForm';
 
 const ResumeBuilder = () => {
 
@@ -39,11 +44,11 @@ const ResumeBuilder = () => {
 
 	const sections = [
 		{id: "personal", name: "Personal Info", icon: User},
-		{id: "summay", name: "summay", icon: FileText},
+		{id: "summary", name: "summay", icon: FileText},
 		{id: "experience", name: "Experience", icon: Briefcase},
 		{id: "education", name: "Education", icon: GraduationCap},
 		{id: "projects", name: "Projects", icon: FolderIcon},
-		{id: "skills", name: "Skills", icon: Sparkles}, 
+		{id: "skills", name: "Skill", icon: Sparkles}, 
 	]
 
 	const activeSection = sections[activeSectionIndex]
@@ -70,7 +75,7 @@ const ResumeBuilder = () => {
 						{/* Progress barre - using activeSectionIndex */}
 						<hr  className='absolute top-0 left-0 right-0 border-2 border-gray-200'/>
 						<hr className='absolute top-0 left-0 h-1 bg-gradient-to-r
-						from-blue-700 to-green-500 border-none transition-all duration-2000' 
+						from-green-400 to-green-700 border-none transition-all duration-2000' 
 						style={{width: `${activeSectionIndex * 100 / (sections.length - 1)}%`}} />
 
 						{/* Section Navigation */}
@@ -108,6 +113,41 @@ const ResumeBuilder = () => {
 										removeBackground={removeBackground}
 										setRemoveBackground={setRemoveBackground}
 										/>
+								)
+							}
+							{
+								activeSection.id === 'summary' && (
+									<ProfessionalSummary data={resumeData.professional_summary} onChange={(data) =>
+										setResumeData(prev => ({...prev, professional_summary:data}))
+									}	setResumeData={setResumeData} />
+								)
+							}
+							{
+								activeSection.id === 'experience' && (
+									<ExperienceForm data={resumeData.experience} onChange={(data) =>
+										setResumeData(prev => ({...prev, experience:data}))
+									}	setResumeData={setResumeData} />
+								)
+							}
+							{
+								activeSection.id === 'education' && (
+									<EducationForm data={resumeData.education} onChange={(data) =>
+										setResumeData(prev => ({...prev, education:data}
+										))} />
+								)
+							}
+							{
+								activeSection.id === 'projects' && (
+									<ProjectForm data={resumeData.project} onChange={(data) =>
+										setResumeData(prev => ({...prev, project:data}))
+									}/>
+								)
+							}
+							{
+								activeSection.id === 'skills' && (
+									<SkillsForm data={resumeData.skills} onChange={(data) => 
+										setResumeData(prev => ({...prev, skills:data}))
+									} />
 								)
 							}
 						</div>
