@@ -2,7 +2,7 @@ import React from 'react';
 import customPic1 from '../../assets/z.jpeg';
 import customPic2 from '../../assets/me.jpeg';
 import customPic3 from '../../assets/z.jpeg';
-import customPic4 from '../../assets/z.jpeg';
+import customPic4 from '../../assets/soufyan.jpeg';
 import customPic5 from '../../assets/z.jpeg';
 import customPic6 from '../../assets/z.jpeg';
 
@@ -11,7 +11,7 @@ const Testimonial = () => {
     { image: customPic1, name: 'Zakaria Alliouate', handle: '@alliouate_zaka', date: 'November 03, 2025', comment: 'This AI résumé tool gave me precise guidance that made my CV truly stand out!' },
     { image: customPic2, name: 'Aymane Benomar', handle: '@aymanebenomar', date: 'October 17, 2025', comment: 'Creating multiple CV versions and tracking improvements has never been this easy.' },
     { image: customPic3, name: 'Youssef El Amrani', handle: '@youssef_elamrani', date: 'November 15, 2025', comment: 'Thanks to this AI résumé tool, I created a standout CV that helped me land interviews faster than ever!' },
-    { image: customPic4, name: 'Fatima Zahra', handle: '@fzahra', date: 'October 10, 2025', comment: 'The suggestions and templates are incredibly useful. It feels like having a professional career advisor at my fingertips.' },
+    { image: customPic4, name: 'Soufyan Attifi', handle: '@atsoufyan', date: 'October 2, 2025', comment: 'The suggestions and templates are incredibly useful. It feels like having a professional career advisor at my fingertips.' },
     { image: customPic5, name: 'Liam O’Connor', handle: '@liamoc', date: 'September 22, 2025', comment: 'I love how easy it is to manage multiple résumé versions and see AI feedback instantly.' },
     { image: customPic6, name: 'Amina Benali', handle: '@amina_b', date: 'November 5, 2025', comment: 'Creating a professional-looking CV has never been this smooth. Highly recommend it!' }
   ];

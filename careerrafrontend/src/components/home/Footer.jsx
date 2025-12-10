@@ -4,7 +4,8 @@ import logo from '../../assets/darkmodelogo.svg'; // Update path if needed
 
 const Footer = () => {
   return (
-    <footer className="relative w-full bg-black text-white min-h-[78vh] overflow-hidden flex flex-col">
+    <footer className="relative w-full bg-black text-white min-h-screen overflow-hidden flex flex-col">
+
 
       {/* Top overlay/fog */}
       <div className="absolute top-0 left-0 w-full h-56 sm:h-60 md:h-64 bg-gradient-to-b from-black/100 via-black/70 to-transparent pointer-events-none z-20"></div>
