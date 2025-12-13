@@ -2,9 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Logo from '../assets/careerralogowebsite.svg';
 import { Menu, X } from 'lucide-react';
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from '../app/features/authSlice.js';
 
 const Usernavbar = () => {
-  const user = { name: "Benomar Aymane" };
+  const { user } = useSelector(state => state.auth)
+  const dispatch = useDispatch()
+
   const navigate = useNavigate();
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -19,7 +23,8 @@ const Usernavbar = () => {
 
   const handleLogout = () => {
     console.log("User logged out");
-    navigate('/login');
+    navigate('/');
+    dispatch(logout())
   };
 
   return (

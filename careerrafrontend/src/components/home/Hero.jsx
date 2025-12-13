@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
+
 const Hero = () => {
   const [menuOpen, setMenuOpen] = React.useState(false);
 

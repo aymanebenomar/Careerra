@@ -1,14 +1,29 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom'
 import Usernavbar from '../components/Usernavbar'
+import {useSelector} from 'react-redux'
+import Loader from '../components/Loader'
+import Login from './Login';
+
+
 
 const Layout = () => {
+
+	const {user, loading} = useSelector(state => state.auth)
+
+	if(loading) {
+		return <Loader />
+	}
   return (
 	<div>
-		<div>
-			<Usernavbar />
-			<Outlet />
-		</div>
+			{
+				user ? (<div>
+							<Usernavbar />
+							<Outlet />
+						</div>
+					
+						) : <Login />
+			} 
 	</div>
   )
 }

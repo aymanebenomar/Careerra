@@ -2,8 +2,13 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import Logo from "../../assets/careerralogowebsite.svg";
+import { useSelector } from "react-redux";
+
 
 const Navbar = () => {
+
+  const {user} = useSelector(state => state.auth)
+
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const navbarRef = useRef(null);
@@ -71,6 +76,7 @@ const Navbar = () => {
 			<Link
               to='/app?state=login'
               className="px-6 py-2 border active:scale-95 hover:bg-slate-50 transition-all rounded-full text-slate-700 hover:text-slate-900"
+              hidden={user}
             >
               Login
             </Link>
@@ -85,8 +91,49 @@ const Navbar = () => {
                 px-5 py-2 transition-all duration-300
               "
               style={{ fontFamily: "Inter, sans-serif" }}
+              hidden={user}
             >
               Get Started
+              <svg
+                className="w-4 h-4 transform rotate-45"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M19 12H5m14 0-4 4m4-4-4-4"
+                />
+              </svg>
+            </Link>
+
+          {/*  Dashboaaaard  */}
+
+          <Link
+              to='/profile'
+              className="px-6 py-2 border active:scale-95 hover:bg-slate-50 transition-all rounded-full text-slate-700 hover:text-slate-900"
+              hidden={!user}
+          >
+            Profile
+          </Link>
+
+          <Link
+              to="/app"
+              className="
+                inline-flex items-center gap-2
+                text-white bg-black hover:bg-black/80
+                border border-white/10 shadow-xs
+                font-light tracking-wide
+                leading-5 rounded-full text-sm
+                px-5 py-2 transition-all duration-300
+              "
+              style={{ fontFamily: "Inter, sans-serif" }}
+              hidden={!user}
+            >
+              Dashboard
               <svg
                 className="w-4 h-4 transform rotate-45"
                 xmlns="http://www.w3.org/2000/svg"

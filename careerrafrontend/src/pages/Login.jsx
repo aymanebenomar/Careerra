@@ -2,8 +2,14 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Mail, User, Lock } from "lucide-react";
 import logo from "../assets/darkmodelogo.svg";
+import { useDispatch } from "react-redux";
+import { login } from "../app/features/authSlice.js";
+import toast from "react-hot-toast";
+import api from "../configs/api.js";
 
 const Login = () => {
+
+  const dispatch = useDispatch();
 
   const query = new URLSearchParams(window.location.search);
   const urlState = query.get("state");
@@ -16,9 +22,16 @@ const Login = () => {
     password: "",
   });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form submitted:", formData, "Mode:", state);
+    try {
+      const { data } = await api.post(`/api/users/${state}`, formData)
+      dispatch(login(data))
+      localStorage.setItem('token', data.token)
+      toast.success(data.message)
+    } catch (error) {
+      toast.error(error?.response?.data?.message || error.message)
+    }
   };
 
   const handleChange = (e) => {
