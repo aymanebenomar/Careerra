@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useParams, Link, data } from 'react-router-dom'
-import { dummyResumeData } from '../assets/assets'
+import { useParams, Link } from 'react-router-dom'
 import { ArrowLeftIcon, Briefcase, ChevronLeft, ChevronRight, DownloadIcon, EyeIcon, EyeOffIcon, FileText, FolderIcon, GraduationCap, Share2Icon, Sparkles, User } from 'lucide-react'
 import Dashboard from './Dashboard';
 import PersonalinfoForm from '../components/PersonalinfoForm';
